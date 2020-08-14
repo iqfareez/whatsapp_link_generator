@@ -34,6 +34,7 @@ class MyHomePage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: null,
+          //TODO: Defin onpress, buka aboutwidget maybe
           child: FaIcon(FontAwesomeIcons.infoCircle),
           tooltip: 'Info',
         ));

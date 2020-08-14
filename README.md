@@ -1,6 +1,13 @@
-# whatsapp_link_generator
+# WhatsApp Link Generator
 
-WhatsApp link generator
+Flutter-based app.
+
+## Web demo
+
+## Get the app
+
+1. Google Play Store
+2. Huawei App Gallery
 
 ## Resource attribution
 
