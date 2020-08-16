@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class MainForm extends StatelessWidget {
+class MainForm extends StatefulWidget {
+  @override
+  _MainFormState createState() => _MainFormState();
+}
+
+class _MainFormState extends State<MainForm> {
+  TextEditingController phoneNumController = TextEditingController();
+  String phoneNum = '';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +37,26 @@ class MainForm extends StatelessWidget {
           children: [
             Text('Phone number here'),
             Text('Include your country code'),
-            Neumorphic(child: TextField()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                    depth: -24.0,
+                    intensity: 18.0,
+                    color: Colors.transparent,
+                    shape: NeumorphicShape.convex,
+                    lightSource: LightSource.top),
+                child: TextField(
+                  controller: phoneNumController,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.ac_unit),
+                    suffixIcon: Icon(null),
+                    hintText: 'Eg: 601956291',
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
