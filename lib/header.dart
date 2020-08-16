@@ -20,7 +20,7 @@ class AppHeader extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        height: 200,
+        height: 238,
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -28,10 +28,10 @@ class AppHeader extends StatelessWidget {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
             image: DecorationImage(
-              image: AssetImage("images/abstract_shapes_3874551.png"),
+              image: AssetImage("assets/images/abstract_shapes_3874551.png"),
               fit: BoxFit.cover,
               colorFilter: new ColorFilter.mode(
-                  Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                  Colors.white24.withOpacity(0.2), BlendMode.dstATop),
             )),
       ),
     );
