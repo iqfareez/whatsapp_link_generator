@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainForm extends StatefulWidget {
   @override
@@ -35,8 +36,14 @@ class _MainFormState extends State<MainForm> {
         ),
         child: Column(
           children: [
-            Text('Phone number here'),
-            Text('Include your country code'),
+            Text(
+              'Phone number',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            ),
+            Text(
+              'Include your country code',
+              style: TextStyle(fontSize: 12.0),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Neumorphic(
@@ -50,10 +57,13 @@ class _MainFormState extends State<MainForm> {
                   controller: phoneNumController,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.ac_unit),
-                    suffixIcon: Icon(null),
+                    border: InputBorder.none,
+                    // prefixIcon: Icon(Icons.contact_phone),
+                    // suffixIcon: Icon(null),
+
                     hintText: 'Eg: 601956291',
                   ),
+                  keyboardType: TextInputType.phone,
                 ),
               ),
             ),
