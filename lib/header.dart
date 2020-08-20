@@ -20,7 +20,7 @@ class AppHeader extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        height: 238,
+        height: 200,
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(

@@ -25,14 +25,19 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppHeader(),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(8.0),
+                color: Colors.transparent,
+                padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                 child: MainForm(),
               ),
             )
@@ -41,16 +46,32 @@ class MyHomePage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showAboutDialog(
-              context: context,
-              applicationName: 'WhatsApp link generator',
-              applicationIcon: Image.network(
-                'https://firebasestorage.googleapis.com/v0/b/whatsapp-quick-link.appspot.com/o/WhatsApp%20link%20generator%20(Custom).png?alt=media&token=7dc62d66-37a7-4862-a615-2836e9fb3d47',
-                width: 80.0,
-              ),
-            );
+                context: context,
+                applicationName: 'WhatsApp link generator',
+                applicationVersion: '1.0.0+1',
+                applicationLegalese: '©maplerr 2020',
+                applicationIcon: Image.network(
+                  'https://firebasestorage.googleapis.com/v0/b/whatsapp-quick-link.appspot.com/o/WhatsApp%20link%20generator%20(Custom).png?alt=media&token=7dc62d66-37a7-4862-a615-2836e9fb3d47',
+                  width: 80.0,
+                ),
+                children: <Widget>[
+                  FlatButton(
+                    child: FaIcon(
+                      FontAwesomeIcons.twitter,
+                      color: Colors.blue,
+                    ),
+                    onPressed: () {
+                      print('Twitter pressed');
+                    },
+                  )
+                ]);
           },
           child: FaIcon(FontAwesomeIcons.infoCircle),
           tooltip: 'Info',
-        ));
+          mini: true,
+        ),
+        resizeToAvoidBottomInset: false,
+      ),
+    );
   }
 }
