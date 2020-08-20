@@ -1,8 +1,10 @@
 # WhatsApp Link Generator
 
-Flutter-based app.
+Flutter-based app. Generate wa.me link.
 
 ## Web demo
+
+https://whatsapp-quick-link.web.app/
 
 ## Get the app
 
