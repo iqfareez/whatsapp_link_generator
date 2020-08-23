@@ -18,20 +18,20 @@ class _MainFormState extends State<MainForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
+      // margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
       child: KeyboardAvoider(
         autoScroll: true,
         child: Column(
           children: [
             inputPhoneForm(),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             inputMessageForm(),
             Row(
               children: [
-                generateButton(),
-                clearAllButton(),
+                Expanded(child: generateButton()),
+                Expanded(child: clearAllButton()),
               ],
             )
           ],
@@ -42,6 +42,7 @@ class _MainFormState extends State<MainForm> {
 
   Widget inputMessageForm() {
     return Neumorphic(
+      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
       style: NeumorphicStyle(
         lightSource: LightSource.left,
         shape: NeumorphicShape.convex,
@@ -103,6 +104,7 @@ class _MainFormState extends State<MainForm> {
 
   Widget inputPhoneForm() {
     return Neumorphic(
+      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
       style: NeumorphicStyle(
         lightSource: LightSource.right,
         shape: NeumorphicShape.convex,
@@ -165,25 +167,35 @@ class _MainFormState extends State<MainForm> {
   }
 
   Widget generateButton() {
-    return NeumorphicButton(
-      child: ListTile(
-        leading: FaIcon(FontAwesomeIcons.link),
-        title: Text('Generate Link'),
-      ),
+    return Neumorphic(
+      margin: EdgeInsets.all(16.0),
       style: NeumorphicStyle(
-        color: Colors.green,
+        shadowDarkColor: Colors.green.shade200,
+        shape: NeumorphicShape.flat,
+        depth: 8,
+      ),
+      child: FlatButton(
+        child: Text('Generate Link'),
+        onPressed: () {
+          print('generate called');
+        },
       ),
     );
   }
 
   Widget clearAllButton() {
-    return NeumorphicButton(
-      child: ListTile(
-        leading: FaIcon(FontAwesomeIcons.eraser),
-        title: Text('Clear All'),
-      ),
+    return Neumorphic(
+      margin: EdgeInsets.all(16.0),
       style: NeumorphicStyle(
-        color: Colors.green,
+        shadowDarkColor: Colors.red.shade200,
+        shape: NeumorphicShape.flat,
+        depth: 8,
+      ),
+      child: FlatButton(
+        child: Text('Clear All'),
+        onPressed: () {
+          print('Called clear');
+        },
       ),
     );
   }

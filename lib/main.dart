@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:whatsapp_link_generator/CONSTANTS.dart';
 import 'package:whatsapp_link_generator/form.dart';
 import 'package:whatsapp_link_generator/header.dart';
 
@@ -35,11 +36,7 @@ class MyHomePage extends StatelessWidget {
           children: [
             AppHeader(),
             Expanded(
-              child: Container(
-                color: Colors.transparent,
-                padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
-                child: MainForm(),
-              ),
+              child: MainForm(),
             )
           ],
         ),
@@ -51,8 +48,8 @@ class MyHomePage extends StatelessWidget {
                 applicationVersion: '1.0.0+1',
                 applicationLegalese: '©maplerr 2020',
                 applicationIcon: Image.network(
-                  'https://firebasestorage.googleapis.com/v0/b/whatsapp-quick-link.appspot.com/o/WhatsApp%20link%20generator%20(Custom).png?alt=media&token=7dc62d66-37a7-4862-a615-2836e9fb3d47',
-                  width: 80.0,
+                  IconImageUrl,
+                  width: 60.0,
                 ),
                 children: <Widget>[
                   FlatButton(
