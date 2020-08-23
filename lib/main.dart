@@ -60,6 +60,10 @@ class MyHomePage extends StatelessWidget {
                     onPressed: () {
                       print('Twitter pressed');
                     },
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text('https://whatsapp-quick-link.web.app/'),
                   )
                 ]);
           },
