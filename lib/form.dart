@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 
 class MainForm extends StatefulWidget {
@@ -27,6 +28,12 @@ class _MainFormState extends State<MainForm> {
               height: 20.0,
             ),
             inputMessageForm(),
+            Row(
+              children: [
+                generateButton(),
+                clearAllButton(),
+              ],
+            )
           ],
         ),
       ),
@@ -153,6 +160,30 @@ class _MainFormState extends State<MainForm> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget generateButton() {
+    return NeumorphicButton(
+      child: ListTile(
+        leading: FaIcon(FontAwesomeIcons.link),
+        title: Text('Generate Link'),
+      ),
+      style: NeumorphicStyle(
+        color: Colors.green,
+      ),
+    );
+  }
+
+  Widget clearAllButton() {
+    return NeumorphicButton(
+      child: ListTile(
+        leading: FaIcon(FontAwesomeIcons.eraser),
+        title: Text('Clear All'),
+      ),
+      style: NeumorphicStyle(
+        color: Colors.green,
       ),
     );
   }
