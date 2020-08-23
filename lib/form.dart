@@ -40,68 +40,6 @@ class _MainFormState extends State<MainForm> {
     );
   }
 
-  Widget inputMessageForm() {
-    return Neumorphic(
-      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
-      style: NeumorphicStyle(
-        lightSource: LightSource.left,
-        shape: NeumorphicShape.convex,
-        depth: 8,
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          color: Colors.grey[300],
-        ),
-        child: Column(
-          children: [
-            ListTile(
-              title: Text(
-                'Message',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-              ),
-              subtitle: Text(
-                '(optional)',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12.0),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Neumorphic(
-                style: NeumorphicStyle(
-                    depth: -24.0,
-                    intensity: 18.0,
-                    color: Colors.transparent,
-                    shape: NeumorphicShape.convex,
-                    lightSource: LightSource.top),
-                child: TextField(
-                  controller: messageContentController,
-                  maxLines: 4,
-                  textAlign: TextAlign.left,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    // prefixIcon: Icon(Icons.contact_phone),
-                    // suffixIcon: Icon(null),
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
-                      onPressed: () {
-                        messageContentController.clear();
-                      },
-                    ),
-                    hintText: 'Eg: Hi. How are you?',
-                  ),
-                  keyboardType: TextInputType.multiline,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget inputPhoneForm() {
     return Neumorphic(
       margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
@@ -157,6 +95,72 @@ class _MainFormState extends State<MainForm> {
                     hintText: 'Eg: 601956291',
                   ),
                   keyboardType: TextInputType.phone,
+                  textInputAction: TextInputAction.next,
+                  onSubmitted: (value) => context.nextEditableTextFocus(),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget inputMessageForm() {
+    return Neumorphic(
+      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
+      style: NeumorphicStyle(
+        lightSource: LightSource.left,
+        shape: NeumorphicShape.convex,
+        depth: 8,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: Colors.grey[300],
+        ),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                'Message',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
+              subtitle: Text(
+                '(optional)',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12.0),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                    depth: -24.0,
+                    intensity: 18.0,
+                    color: Colors.transparent,
+                    shape: NeumorphicShape.convex,
+                    lightSource: LightSource.top),
+                child: TextField(
+                  controller: messageContentController,
+                  maxLines: 4,
+                  textAlign: TextAlign.left,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    // prefixIcon: Icon(Icons.contact_phone),
+                    // suffixIcon: Icon(null),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        messageContentController.clear();
+                      },
+                    ),
+                    hintText: 'Eg: Hi. How are you?',
+                  ),
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.done,
+                  onSubmitted: (value) => FocusScope.of(context).unfocus(),
                 ),
               ),
             ),
@@ -201,4 +205,12 @@ class _MainFormState extends State<MainForm> {
   }
 }
 
+extension Utility on BuildContext {
+  void nextEditableTextFocus() {
+    do {
+      FocusScope.of(this).nextFocus();
+    } while (FocusScope.of(this).focusedChild.context.widget is! EditableText);
+  }
+  //solution by https://stackoverflow.com/a/63005046/13617136
+}
 //Neumorhic docs - https://pub.dev/packages/flutter_neumorphic
