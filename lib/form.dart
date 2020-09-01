@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
+import 'package:whatsapp_link_generator/result.dart';
 
 class MainForm extends StatefulWidget {
   @override
@@ -12,8 +13,6 @@ class MainForm extends StatefulWidget {
 class _MainFormState extends State<MainForm> {
   TextEditingController phoneNumController = TextEditingController();
   TextEditingController messageContentController = TextEditingController();
-  String phoneNum = '';
-  String messageContent = '';
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +173,6 @@ class _MainFormState extends State<MainForm> {
     return Neumorphic(
       margin: EdgeInsets.all(16.0),
       style: NeumorphicStyle(
-        shadowDarkColor: Colors.green.shade200,
         shape: NeumorphicShape.flat,
         depth: 8,
       ),
@@ -182,6 +180,14 @@ class _MainFormState extends State<MainForm> {
         child: Text('Generate Link'),
         onPressed: () {
           print('generate called');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ResultPage(
+                  phoneNumber: phoneNumController.text,
+                  message: messageContentController.text,
+                ),
+              ));
         },
       ),
     );
@@ -191,7 +197,6 @@ class _MainFormState extends State<MainForm> {
     return Neumorphic(
       margin: EdgeInsets.all(16.0),
       style: NeumorphicStyle(
-        shadowDarkColor: Colors.red.shade200,
         shape: NeumorphicShape.flat,
         depth: 8,
       ),
