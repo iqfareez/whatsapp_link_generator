@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:whatsapp_link_generator/Reuseable_widget.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage({this.phoneNumber, this.message});
@@ -57,18 +58,18 @@ class _ResultBodyState extends State<ResultBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            flex: 1,
-            child: Wrap(
-              children: [
-                for (final chip in chips)
-                  Padding(
-                    padding: EdgeInsets.all(4),
-                    child: chip,
-                  )
-              ],
-            ),
-          ),
+          // Expanded(
+          //   flex: 1,
+          //   child: Wrap(
+          //     children: [
+          //       for (final chip in chips)
+          //         Padding(
+          //           padding: EdgeInsets.all(4),
+          //           child: chip,
+          //         )
+          //     ],
+          //   ),
+          // ),
           Expanded(
             flex: 4,
             child: Text(
@@ -76,7 +77,22 @@ class _ResultBodyState extends State<ResultBody> {
           ),
           Expanded(
             flex: 2,
-            child: Text('Action area'),
+            child: Row(
+              children: [
+                NeuButton(
+                  label: 'Open WhatsApp',
+                  onPressedButton: () {
+                    //TODO: open whatsapp
+                  },
+                ),
+                NeuButton(
+                  label: 'Copy link',
+                  onPressedButton: () {
+                    //TODO: Copy link
+                  },
+                )
+              ],
+            ),
           )
         ],
       ),

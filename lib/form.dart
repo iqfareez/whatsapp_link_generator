@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
+import 'package:whatsapp_link_generator/Reuseable_widget.dart';
 import 'package:whatsapp_link_generator/result.dart';
 
 class MainForm extends StatefulWidget {
@@ -29,8 +30,29 @@ class _MainFormState extends State<MainForm> {
             inputMessageForm(),
             Row(
               children: [
-                Expanded(child: generateButton()),
-                Expanded(child: clearAllButton()),
+                Expanded(
+                  child: NeuButton(
+                    label: 'Generate link',
+                    onPressedButton: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultPage(
+                              phoneNumber: phoneNumController.text,
+                              message: messageContentController.text,
+                            ),
+                          ));
+                    },
+                  ),
+                ),
+                Expanded(
+                    child: NeuButton(
+                  label: 'Clear all',
+                  onPressedButton: () {
+                    messageContentController.clear();
+                    phoneNumController.clear();
+                  },
+                )),
               ],
             )
           ],
@@ -165,46 +187,6 @@ class _MainFormState extends State<MainForm> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget generateButton() {
-    return Neumorphic(
-      margin: EdgeInsets.all(16.0),
-      style: NeumorphicStyle(
-        shape: NeumorphicShape.flat,
-        depth: 8,
-      ),
-      child: FlatButton(
-        child: Text('Generate Link'),
-        onPressed: () {
-          print('generate called');
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ResultPage(
-                  phoneNumber: phoneNumController.text,
-                  message: messageContentController.text,
-                ),
-              ));
-        },
-      ),
-    );
-  }
-
-  Widget clearAllButton() {
-    return Neumorphic(
-      margin: EdgeInsets.all(16.0),
-      style: NeumorphicStyle(
-        shape: NeumorphicShape.flat,
-        depth: 8,
-      ),
-      child: FlatButton(
-        child: Text('Clear All'),
-        onPressed: () {
-          print('Called clear');
-        },
       ),
     );
   }
