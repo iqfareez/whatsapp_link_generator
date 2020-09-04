@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_link_generator/Reuseable_widget.dart';
+import 'package:whatsapp_link_generator/custom_widget.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage({this.phoneNumber, this.message});
@@ -29,8 +32,11 @@ class ResultBody extends StatefulWidget {
 class _ResultBodyState extends State<ResultBody> {
   bool isSelectedPhone = true;
   bool isSelectedMessage = true;
+
   @override
   Widget build(BuildContext context) {
+    String urlWaEncoded =
+        'https://wa.me/${widget.phoneNum}?text=${Uri.encodeComponent(widget.message)}';
     final chips = [
       FilterChip(
         label: Text('Phone number'),
@@ -72,8 +78,7 @@ class _ResultBodyState extends State<ResultBody> {
           // ),
           Expanded(
             flex: 4,
-            child: Text(
-                'https://wa.me/${widget.phoneNum}/${Uri.encodeComponent(widget.message)}'),
+            child: Text(urlWaEncoded),
           ),
           Expanded(
             flex: 2,
@@ -82,20 +87,33 @@ class _ResultBodyState extends State<ResultBody> {
                 NeuButton(
                   label: 'Open WhatsApp',
                   onPressedButton: () {
-                    //TODO: open whatsapp
+                    _launchURL(context, urlWaEncoded);
                   },
                 ),
                 NeuButton(
                   label: 'Copy link',
                   onPressedButton: () {
-                    //TODO: Copy link
+                    Clipboard.setData(ClipboardData(text: urlWaEncoded));
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text('Copied successfully'),
+                    ));
                   },
                 )
+                //add share button?
               ],
             ),
           )
         ],
       ),
     );
+  }
+}
+
+_launchURL(BuildContext context, String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    CustomWidgets.buildErrorSnackbar(context, 'Error opening WhatsApp');
+    throw 'Could not launch $url';
   }
 }
