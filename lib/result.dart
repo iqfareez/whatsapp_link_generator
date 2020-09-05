@@ -78,32 +78,41 @@ class _ResultBodyState extends State<ResultBody> {
           // ),
           Expanded(
             flex: 4,
-            child: Text(urlWaEncoded),
+            child: FittedBox(fit: BoxFit.contain, child: Text(urlWaEncoded)),
           ),
           Expanded(
             flex: 2,
-            child: Row(
+            child: Column(
               children: [
-                NeuButton(
-                  label: 'Open WhatsApp',
-                  onPressedButton: () {
-                    _launchURL(context, urlWaEncoded);
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    NeuButton(
+                      label: 'Open WhatsApp',
+                      onPressedButton: () {
+                        _launchURL(context, urlWaEncoded);
+                      },
+                    ),
+                    NeuButton(
+                      label: 'Copy link',
+                      onPressedButton: () {
+                        Clipboard.setData(ClipboardData(text: urlWaEncoded));
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text('Copied successfully'),
+                        ));
+                      },
+                    ),
+                  ],
                 ),
-                NeuButton(
-                  label: 'Copy link',
-                  onPressedButton: () {
-                    Clipboard.setData(ClipboardData(text: urlWaEncoded));
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text('Copied successfully'),
-                    ));
-                  },
-                )
                 //add share button?
+                NeumorButton()
               ],
             ),
+            //add share button?
           )
         ],
+        //add share button?
       ),
     );
   }

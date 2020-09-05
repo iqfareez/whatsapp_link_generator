@@ -14,7 +14,7 @@ class NeuButton extends StatelessWidget {
       margin: EdgeInsets.all(16.0),
       style: NeumorphicStyle(
         shape: NeumorphicShape.flat,
-        depth: 8,
+        depth: 4,
       ),
       child: FlatButton(
         child: Text(label),
@@ -24,5 +24,22 @@ class NeuButton extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class NeumorButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return NeumorphicButton(
+        margin: EdgeInsets.only(top: 12),
+        onPressed: () {},
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+        ),
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          "Toggle Theme",
+        ));
   }
 }

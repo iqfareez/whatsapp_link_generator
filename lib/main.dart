@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:whatsapp_link_generator/CONSTANTS.dart';
 import 'package:whatsapp_link_generator/form.dart';
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return NeumorphicApp(
       title: 'WhatsApp link generator',
-      theme: ThemeData(
-          primarySwatch: Colors.teal,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: 'Helvetivca'),
+      theme: NeumorphicThemeData(
+          // textTheme: ThemeData(fontFamily: ''),
+
+          ),
       home: MyHomePage(),
     );
   }
