@@ -38,7 +38,7 @@ class _MainFormState extends State<MainForm> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ResultPage(
-                              phoneNumber: phoneNumController.text,
+                              phoneNumber: phoneNumController.text.trim(),
                               message: messageContentController.text,
                             ),
                           ));
