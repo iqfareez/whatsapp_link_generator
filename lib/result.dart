@@ -106,7 +106,6 @@ class _ResultBodyState extends State<ResultBody> {
                   ],
                 ),
                 //add share button?
-                NeumorButton()
               ],
             ),
             //add share button?
