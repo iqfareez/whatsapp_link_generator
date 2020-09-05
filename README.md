@@ -14,3 +14,7 @@ https://whatsapp-quick-link.web.app/
 ## Resource attribution
 
 1. <a href='https://pngtree.com/so/pattern'>pattern png from pngtree.com</a>
+
+## Privacy Policy
+
+https://telegra.ph/WA-Quick-Link---Privacy-Policy-09-05
