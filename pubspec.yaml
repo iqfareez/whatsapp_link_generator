@@ -3,7 +3,7 @@ description: WhatsApp link generator
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -29,22 +29,3 @@ flutter:
 
   assets:
     - assets/images/abstract_shapes_3874551.png
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-    - family: Helvetica
-      fonts:
-        - asset: fonts/Helvetica.ttf
-        - asset: fonts/Helvetica-Oblique.ttf
-        - asset: fonts/Helvetica-Bold.ttf
-          weight: 700
