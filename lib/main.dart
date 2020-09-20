@@ -41,7 +41,8 @@ class MyHomePage extends StatelessWidget {
             )
           ],
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: NeumorphicFloatingActionButton(
+          style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
             showAboutDialog(
                 context: context,
@@ -68,10 +69,14 @@ class MyHomePage extends StatelessWidget {
                   )
                 ]);
           },
-          child: FaIcon(FontAwesomeIcons.infoCircle),
+          child: Center(child: FaIcon(FontAwesomeIcons.infoCircle)),
           tooltip: 'Info',
           mini: true,
         ),
+
+        // floatingActionButton: FloatingActionButton(
+        //
+        // ),
         resizeToAvoidBottomInset: false,
       ),
     );
