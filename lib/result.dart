@@ -1,14 +1,21 @@
+import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_link_generator/Reuseable_widget.dart';
 import 'package:whatsapp_link_generator/custom_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 String urlWaEncoded;
+String temporaryDirectory;
 NeumorphicStyle neuCardStyle = NeumorphicStyle(
   depth: 8,
   shape: NeumorphicShape.flat,
@@ -56,9 +63,12 @@ class ResultPage extends StatelessWidget {
     switch (value) {
       case 'as QR image':
         print(value);
+        Share.shareFiles(['$temporaryDirectory/image.png'],
+            text: 'Generated with WA Link Generator');
+        //https://medium.com/@ekosuprastyo15/qr-code-generator-and-scanner-flutter-bd69eaa504a6
         break;
       case 'as link text':
-        //TODO: Add share
+        Share.share(urlWaEncoded);
         break;
     }
   }
@@ -79,6 +89,10 @@ class _ResultBodyState extends State<ResultBody> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      print('timeStamp $timeStamp');
+      captureAndShareImage();
+    });
     urlWaEncoded = widget.message.isNotEmpty
         ? 'wa.me/${widget.phoneNum}?text=${Uri.encodeComponent(widget.message)}'
         : 'wa.me/${widget.phoneNum}';
@@ -90,14 +104,15 @@ class _ResultBodyState extends State<ResultBody> {
         children: [
           Expanded(
             flex: 4,
-            child: Neumorphic(
-              margin: EdgeInsets.all(cardMargin),
-              style: neuCardStyle,
-              child: Container(
-                padding: const EdgeInsets.all(cardPadding),
-                child: Center(
-                  child: RepaintBoundary(
-                    key: globalKey,
+            child: RepaintBoundary(
+              //FIXME: Something to do with colour wtc
+              key: globalKey,
+              child: Neumorphic(
+                margin: EdgeInsets.all(cardMargin),
+                style: neuCardStyle,
+                child: Container(
+                  padding: const EdgeInsets.all(cardPadding),
+                  child: Center(
                     child: QrImage(
                       data: urlWaEncoded,
                     ),
@@ -164,6 +179,24 @@ class _ResultBodyState extends State<ResultBody> {
     Scaffold.of(context).showSnackBar(SnackBar(
       content: Text('Copied successfully'),
     ));
+  }
+
+  Future<void> captureAndShareImage() async {
+    try {
+      RenderRepaintBoundary boundary =
+          globalKey.currentContext.findRenderObject();
+      var image = await boundary.toImage();
+      ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
+      Uint8List pngBytes = byteData.buffer.asUint8List();
+
+      final tempDir = await getTemporaryDirectory();
+      temporaryDirectory = tempDir.path;
+      print('fareez here $temporaryDirectory');
+      final file = await new File('$temporaryDirectory/image.png').create();
+      await file.writeAsBytes(pngBytes);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
 
