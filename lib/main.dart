@@ -3,7 +3,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:whatsapp_link_generator/CONSTANTS.dart';
 import 'package:whatsapp_link_generator/form.dart';
-import 'package:whatsapp_link_generator/header.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,11 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
+      // debugShowCheckedModeBanner: false,
       title: 'WhatsApp link generator',
-      theme: NeumorphicThemeData(
-          // textTheme: ThemeData(fontFamily: ''),
-
-          ),
+      themeMode: ThemeMode.light,
       home: MyHomePage(),
     );
   }
@@ -32,10 +29,15 @@ class MyHomePage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        appBar: NeumorphicAppBar(
+          title: Text(
+            'WhatsApp link generator',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AppHeader(),
             Expanded(
               child: MainForm(),
             )
@@ -47,8 +49,8 @@ class MyHomePage extends StatelessWidget {
             showAboutDialog(
                 context: context,
                 applicationName: 'WhatsApp link generator',
-                applicationVersion: '1.0.0+1',
-                applicationLegalese: '©maplerr 2020',
+                applicationVersion: '1.2.4+3',
+                applicationLegalese: '© maplerr 2020',
                 applicationIcon: Image.network(
                   IconImageUrl,
                   width: 60.0,
@@ -73,10 +75,6 @@ class MyHomePage extends StatelessWidget {
           tooltip: 'Info',
           mini: true,
         ),
-
-        // floatingActionButton: FloatingActionButton(
-        //
-        // ),
         resizeToAvoidBottomInset: false,
       ),
     );

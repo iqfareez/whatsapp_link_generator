@@ -11,7 +11,7 @@ class AppHeader extends StatelessWidget {
           child: AutoSizeText(
             'WhatsApp link tool',
             style: TextStyle(
-                fontSize: 40,
+                fontSize: 35,
                 color: Colors.white,
                 fontFamily: 'Helvetica',
                 fontWeight: FontWeight.bold),
@@ -20,7 +20,7 @@ class AppHeader extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        height: 200,
+        height: 180,
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(

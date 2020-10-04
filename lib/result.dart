@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_link_generator/CONSTANTS.dart';
 import 'package:whatsapp_link_generator/Reuseable_widget.dart';
 import 'package:whatsapp_link_generator/custom_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -64,7 +65,7 @@ class ResultPage extends StatelessWidget {
       case 'as QR image':
         print(value);
         Share.shareFiles(['$temporaryDirectory/image.png'],
-            text: 'Generated with WA Link Generator');
+            text: 'Get the app: $kPlayStoreLink');
         //https://medium.com/@ekosuprastyo15/qr-code-generator-and-scanner-flutter-bd69eaa504a6
         break;
       case 'as link text':
@@ -104,17 +105,18 @@ class _ResultBodyState extends State<ResultBody> {
         children: [
           Expanded(
             flex: 4,
-            child: RepaintBoundary(
-              //FIXME: Something to do with colour wtc
-              key: globalKey,
-              child: Neumorphic(
-                margin: EdgeInsets.all(cardMargin),
-                style: neuCardStyle,
-                child: Container(
-                  padding: const EdgeInsets.all(cardPadding),
-                  child: Center(
-                    child: QrImage(
-                      data: urlWaEncoded,
+            child: Neumorphic(
+              margin: EdgeInsets.all(cardMargin),
+              style: neuCardStyle,
+              child: RepaintBoundary(
+                key: globalKey,
+                child: NeumorphicBackground(
+                  child: Container(
+                    padding: const EdgeInsets.all(cardPadding),
+                    child: Center(
+                      child: QrImage(
+                        data: urlWaEncoded,
+                      ),
                     ),
                   ),
                 ),
@@ -163,13 +165,10 @@ class _ResultBodyState extends State<ResultBody> {
                     ),
                   ],
                 ),
-                //add share button?
               ],
             ),
-            //add share button?
           )
         ],
-        //add share button?
       ),
     );
   }
@@ -185,6 +184,12 @@ class _ResultBodyState extends State<ResultBody> {
     try {
       RenderRepaintBoundary boundary =
           globalKey.currentContext.findRenderObject();
+      if (boundary.debugNeedsPaint) {
+        print("Waiting for boundary to be painted.");
+        await Future.delayed(const Duration(milliseconds: 20));
+        return captureAndShareImage();
+        //https://stackoverflow.com/questions/57645037/unable-to-take-screenshot-in-flutter
+      }
       var image = await boundary.toImage();
       ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List pngBytes = byteData.buffer.asUint8List();
@@ -195,7 +200,7 @@ class _ResultBodyState extends State<ResultBody> {
       final file = await new File('$temporaryDirectory/image.png').create();
       await file.writeAsBytes(pngBytes);
     } catch (e) {
-      print(e.toString());
+      print('Error in capturePng: $e');
     }
   }
 }
