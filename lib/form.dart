@@ -63,15 +63,9 @@ class _MainFormState extends State<MainForm> {
   Widget inputPhoneForm() {
     return Neumorphic(
       margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
-      style: NeumorphicStyle(
-        lightSource: LightSource.right,
-        shape: NeumorphicShape.convex,
-        depth: 8,
-      ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          color: Colors.grey[300],
         ),
         child: Column(
           children: [
@@ -91,11 +85,10 @@ class _MainFormState extends State<MainForm> {
               padding: const EdgeInsets.all(8.0),
               child: Neumorphic(
                 style: NeumorphicStyle(
-                    depth: -24.0,
-                    intensity: 18.0,
-                    color: Colors.transparent,
-                    shape: NeumorphicShape.convex,
-                    lightSource: LightSource.top),
+                  depth: -24.0,
+                  color: Colors.transparent,
+                  shape: NeumorphicShape.convex,
+                ),
                 child: TextField(
                   controller: phoneNumController,
                   maxLength: 15,
@@ -129,15 +122,9 @@ class _MainFormState extends State<MainForm> {
   Widget inputMessageForm() {
     return Neumorphic(
       margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
-      style: NeumorphicStyle(
-        lightSource: LightSource.left,
-        shape: NeumorphicShape.convex,
-        depth: 8,
-      ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          color: Colors.grey[300],
         ),
         child: Column(
           children: [
@@ -157,19 +144,16 @@ class _MainFormState extends State<MainForm> {
               padding: const EdgeInsets.all(8.0),
               child: Neumorphic(
                 style: NeumorphicStyle(
-                    depth: -24.0,
-                    intensity: 18.0,
-                    color: Colors.transparent,
-                    shape: NeumorphicShape.convex,
-                    lightSource: LightSource.top),
+                  depth: -24.0,
+                  color: Colors.transparent,
+                  shape: NeumorphicShape.flat,
+                ),
                 child: TextField(
                   controller: messageContentController,
                   maxLines: 4,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    // prefixIcon: Icon(Icons.contact_phone),
-                    // suffixIcon: Icon(null),
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
                       onPressed: () {

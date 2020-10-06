@@ -29,5 +29,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/images/abstract_shapes_3874551.png
+  # assets:
+  # - assets/images/abstract_shapes_3874551.png

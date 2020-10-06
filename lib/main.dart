@@ -30,25 +30,19 @@ class MyHomePage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: NeumorphicAppBar(
+          leading: Icon(FontAwesomeIcons.whatsapp),
           title: Text(
-            'WhatsApp link generator',
+            'WhatsApp Link Generator',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: MainForm(),
-            )
-          ],
-        ),
+        body: MainForm(),
         floatingActionButton: NeumorphicFloatingActionButton(
           style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
             showAboutDialog(
                 context: context,
-                applicationName: 'WhatsApp link generator',
+                applicationName: 'WhatsApp Link Generator',
                 applicationVersion: '1.2.4+3',
                 applicationLegalese: '© maplerr 2020',
                 applicationIcon: Image.network(
@@ -57,18 +51,35 @@ class MyHomePage extends StatelessWidget {
                 ),
                 children: <Widget>[
                   FlatButton(
-                    child: FaIcon(
-                      FontAwesomeIcons.twitter,
-                      color: Colors.blue,
-                    ),
-                    onPressed: () {
-                      print('Twitter pressed');
-                    },
-                  ),
-                  FlatButton(
                     onPressed: () {},
                     child: Text('https://whatsapp-quick-link.web.app/'),
-                  )
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.s
+                    children: [
+                      FlatButton(
+                        child: FaIcon(
+                          FontAwesomeIcons.twitter,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          print('Twitter pressed');
+                          //TODO: Add Insta
+                        },
+                      ),
+                      FlatButton(
+                        child: FaIcon(
+                          FontAwesomeIcons.instagram,
+                          color: Colors.purple,
+                        ),
+                        onPressed: () {
+                          print('Insta pressed');
+                          //TODO: Add Insta
+                        },
+                      ),
+                    ],
+                  ),
                 ]);
           },
           child: Center(child: FaIcon(FontAwesomeIcons.infoCircle)),
