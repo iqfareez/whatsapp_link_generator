@@ -116,6 +116,10 @@ class _ResultBodyState extends State<ResultBody> {
                     child: Center(
                       child: QrImage(
                         data: urlWaEncoded,
+                        foregroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                       ),
                     ),
                   ),

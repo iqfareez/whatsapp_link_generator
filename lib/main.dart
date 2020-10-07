@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_link_generator/CONSTANTS.dart';
+import 'package:whatsapp_link_generator/custom_widget.dart';
 import 'package:whatsapp_link_generator/form.dart';
 
 void main() {
@@ -13,7 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
-      // debugShowCheckedModeBanner: false,
       title: 'WhatsApp link generator',
       themeMode: ThemeMode.light,
       home: MyHomePage(),
@@ -56,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    // mainAxisAlignment: MainAxisAlignment.s
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FlatButton(
                         child: FaIcon(
@@ -64,8 +65,7 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         onPressed: () {
-                          print('Twitter pressed');
-                          //TODO: Add Insta
+                          _launchURL(context, 'https://twitter.com/iqfareez2');
                         },
                       ),
                       FlatButton(
@@ -74,8 +74,18 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.purple,
                         ),
                         onPressed: () {
-                          print('Insta pressed');
-                          //TODO: Add Insta
+                          _launchURL(
+                              context, 'https://www.instagram.com/iqfareez/');
+                        },
+                      ),
+                      FlatButton(
+                        child: FaIcon(
+                          FontAwesomeIcons.github,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          _launchURL(context,
+                              'https://github.com/fareezMaple/WhatsApp-Link-Generator-Flutter');
                         },
                       ),
                     ],
@@ -89,5 +99,14 @@ class MyHomePage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
       ),
     );
+  }
+}
+
+_launchURL(BuildContext context, String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    CustomWidgets.buildErrorSnackbar(context, 'Error opening socmed');
+    throw 'Could not launch $url';
   }
 }
