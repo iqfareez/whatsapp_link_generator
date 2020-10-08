@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
             showAboutDialog(
                 context: context,
                 applicationName: 'WhatsApp Link Generator',
-                applicationVersion: '1.2.4+3',
+                applicationVersion: '1.2.8-F+5',
                 applicationLegalese: '© maplerr 2020',
                 applicationIcon: Image.network(
                   IconImageUrl,
