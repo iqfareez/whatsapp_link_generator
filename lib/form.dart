@@ -162,7 +162,7 @@ class _MainFormState extends State<MainForm> {
                         messageContentController.clear();
                       },
                     ),
-                    hintText: 'Eg: Hi. How are you?',
+                    hintText: 'Eg: Hi. How you doing?',
                   ),
                   keyboardType: TextInputType.multiline,
                   textInputAction: TextInputAction.done,

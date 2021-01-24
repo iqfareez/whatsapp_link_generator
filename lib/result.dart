@@ -171,7 +171,7 @@ class _ResultBodyState extends State<ResultBody> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -179,7 +179,8 @@ class _ResultBodyState extends State<ResultBody> {
 
   void copyLink() {
     Clipboard.setData(ClipboardData(text: urlWaEncoded));
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: SnackBarBehavior.floating,
       content: Text('Copied successfully'),
     ));
   }
