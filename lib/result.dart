@@ -181,7 +181,14 @@ class _ResultBodyState extends State<ResultBody> {
     Clipboard.setData(ClipboardData(text: urlWaEncoded));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       behavior: SnackBarBehavior.floating,
-      content: Text('Copied successfully'),
+      duration: Duration(seconds: 2),
+      content: Row(
+        children: [
+          Icon(FontAwesomeIcons.clipboardCheck, color: Colors.grey),
+          SizedBox(width: 10),
+          Text('Copied successfully'),
+        ],
+      ),
     ));
   }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
-
 import 'Reuseable_widget.dart';
 import 'result.dart';
 
@@ -30,33 +30,51 @@ class _MainFormState extends State<MainForm> {
             inputMessageForm(),
             Row(
               children: [
-                Expanded(
-                  child: NeuButton(
-                    label: 'Generate link',
-                    onPressedButton: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResultPage(
-                              phoneNumber: phoneNumController.text.trim(),
-                              message: messageContentController.text,
-                            ),
-                          ));
-                    },
-                  ),
-                ),
-                Expanded(
-                    child: NeuButton(
-                  label: 'Clear all',
-                  onPressedButton: () {
-                    messageContentController.clear();
-                    phoneNumController.clear();
-                  },
-                )),
+                buildClearButton(),
+                buildGenerateButton(context),
               ],
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Expanded buildClearButton() {
+    return Expanded(
+      child: NeuButton(
+        label: 'Clear all',
+        onPressedButton: () {
+          messageContentController.clear();
+          phoneNumController.clear();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              behavior: SnackBarBehavior.floating,
+              content: Row(
+                children: [
+                  Icon(FontAwesomeIcons.eraser, color: Colors.grey),
+                  SizedBox(width: 10),
+                  Text('Cleared')
+                ],
+              )));
+        },
+      ),
+    );
+  }
+
+  Expanded buildGenerateButton(BuildContext context) {
+    return Expanded(
+      child: NeuButton(
+        label: 'Generate link',
+        onPressedButton: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ResultPage(
+                  phoneNumber: phoneNumController.text.trim(),
+                  message: messageContentController.text,
+                ),
+              ));
+        },
       ),
     );
   }

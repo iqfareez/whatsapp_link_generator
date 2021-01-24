@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
+      debugShowCheckedModeBanner: false,
       title: 'WhatsApp link generator',
       themeMode: ThemeMode.light,
       home: MyHomePage(),
@@ -33,7 +34,7 @@ class MyHomePage extends StatelessWidget {
         appBar: NeumorphicAppBar(
           leading: Icon(FontAwesomeIcons.whatsapp),
           title: Text(
-            'WhatsApp Link Generator',
+            'WA Link Generator',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -42,6 +43,7 @@ class MyHomePage extends StatelessWidget {
           style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
             showAboutDialog(
+                //TODO: Settlekan tempat ni
                 context: context,
                 applicationName: 'WhatsApp Link Generator',
                 applicationVersion: '1.2.8-F+5',
