@@ -32,9 +32,9 @@ or [sideload apk](https://github.com/fareezMaple/WhatsApp-Link-Generator-Flutter
   qr_flutter
 ```
 
-## Resource attribution
+<!-- ## Resource attribution
 
-1. <a href='https://pngtree.com/so/pattern'>pattern png from pngtree.com</a>
+1. <a href='https://pngtree.com/so/pattern'>pattern png from pngtree.com</a> -->
 
 ## Privacy Policy
 

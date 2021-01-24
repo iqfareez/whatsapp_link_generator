@@ -10,9 +10,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp_link_generator/CONSTANTS.dart';
-import 'package:whatsapp_link_generator/Reuseable_widget.dart';
-import 'package:whatsapp_link_generator/custom_widget.dart';
+import 'CONSTANTS.dart';
+import 'Reuseable_widget.dart';
+import 'custom_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 String urlWaEncoded;

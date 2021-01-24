@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp_link_generator/CONSTANTS.dart';
-import 'package:whatsapp_link_generator/custom_widget.dart';
-import 'package:whatsapp_link_generator/form.dart';
+import 'CONSTANTS.dart';
+import 'custom_widget.dart';
+import 'form.dart';
 
 void main() {
   runApp(MyApp());

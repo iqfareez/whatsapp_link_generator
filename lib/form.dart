@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
-import 'package:whatsapp_link_generator/Reuseable_widget.dart';
-import 'package:whatsapp_link_generator/result.dart';
+
+import 'Reuseable_widget.dart';
+import 'result.dart';
 
 class MainForm extends StatefulWidget {
   @override
@@ -153,6 +154,7 @@ class _MainFormState extends State<MainForm> {
                   maxLines: 4,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(8.0),
                     border: InputBorder.none,
                     suffixIcon: IconButton(
                       icon: Icon(Icons.clear),
