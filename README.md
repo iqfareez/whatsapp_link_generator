@@ -1,4 +1,4 @@
-![Maintenance](https://img.shields.io/maintenance/no/2020)
+![Maintenance](https://img.shields.io/maintenance/yes/2021)
 ![Android](https://img.shields.io/badge/Works%20with-Android-green)
 ![Web](https://img.shields.io/badge/Works%20on-Web-green)
 

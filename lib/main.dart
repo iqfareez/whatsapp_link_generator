@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'CONSTANTS.dart';
+import 'package:whatsapp_link_generator/CONSTANTS.dart';
 import 'custom_widget.dart';
 import 'form.dart';
 
@@ -48,16 +49,29 @@ class MyHomePage extends StatelessWidget {
           style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
             showAboutDialog(
-              //TODO: Settlekan tempat ni
               context: context,
               applicationName: appName,
-              applicationVersion: '1.2.8-F+5',
+              applicationVersion: '1.2.14-F+6',
               applicationLegalese: 'Copyright © Muhammad Fareez 2021',
-              applicationIcon: Image.network(
-                IconImageUrl,
-                width: 60.0,
+              applicationIcon: Image.asset(
+                'assets/logo.png',
+                width: 48.0,
               ),
               children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
+                FlatButton.icon(
+                  onPressed: () {
+                    Share.share(
+                        'Hey! I\'m using WA Link Generator to generate whatsapp contact link and QR code. Download it now on Google Play Store: $kPlayStoreLink');
+                  },
+                  icon: FaIcon(FontAwesomeIcons.share),
+                  label: Text('Share this app'),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
