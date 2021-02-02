@@ -11,19 +11,24 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final appName = 'WA link generator';
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
-      debugShowCheckedModeBanner: false,
-      title: 'WhatsApp link generator',
+      // debugShowCheckedModeBanner: false,
+      title: appName,
       themeMode: ThemeMode.light,
-      home: MyHomePage(),
+      home: MyHomePage(
+        appName: appName,
+      ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  MyHomePage({this.appName});
+  final String appName;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,7 +39,7 @@ class MyHomePage extends StatelessWidget {
         appBar: NeumorphicAppBar(
           leading: Icon(FontAwesomeIcons.whatsapp),
           title: Text(
-            'WA Link Generator',
+            appName,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -43,56 +48,53 @@ class MyHomePage extends StatelessWidget {
           style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
             showAboutDialog(
-                //TODO: Settlekan tempat ni
-                context: context,
-                applicationName: 'WhatsApp Link Generator',
-                applicationVersion: '1.2.8-F+5',
-                applicationLegalese: '© maplerr 2020',
-                applicationIcon: Image.network(
-                  IconImageUrl,
-                  width: 60.0,
+              //TODO: Settlekan tempat ni
+              context: context,
+              applicationName: appName,
+              applicationVersion: '1.2.8-F+5',
+              applicationLegalese: 'Copyright © Muhammad Fareez 2021',
+              applicationIcon: Image.network(
+                IconImageUrl,
+                width: 60.0,
+              ),
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FlatButton(
+                      child: FaIcon(
+                        FontAwesomeIcons.twitter,
+                        color: Colors.blue,
+                      ),
+                      onPressed: () {
+                        _launchURL(context, 'https://twitter.com/iqfareez2');
+                      },
+                    ),
+                    FlatButton(
+                      child: FaIcon(
+                        FontAwesomeIcons.instagram,
+                        color: Colors.purple,
+                      ),
+                      onPressed: () {
+                        _launchURL(
+                            context, 'https://www.instagram.com/iqfareez/');
+                      },
+                    ),
+                    FlatButton(
+                      child: FaIcon(
+                        FontAwesomeIcons.github,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        _launchURL(context,
+                            'https://github.com/iqfareez/WhatsApp-Link-Generator-Flutter');
+                      },
+                    ),
+                  ],
                 ),
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () {},
-                    child: Text('https://whatsapp-quick-link.web.app/'),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      FlatButton(
-                        child: FaIcon(
-                          FontAwesomeIcons.twitter,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {
-                          _launchURL(context, 'https://twitter.com/iqfareez2');
-                        },
-                      ),
-                      FlatButton(
-                        child: FaIcon(
-                          FontAwesomeIcons.instagram,
-                          color: Colors.purple,
-                        ),
-                        onPressed: () {
-                          _launchURL(
-                              context, 'https://www.instagram.com/iqfareez/');
-                        },
-                      ),
-                      FlatButton(
-                        child: FaIcon(
-                          FontAwesomeIcons.github,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {
-                          _launchURL(context,
-                              'https://github.com/fareezMaple/WhatsApp-Link-Generator-Flutter');
-                        },
-                      ),
-                    ],
-                  ),
-                ]);
+              ],
+            );
           },
           child: Center(child: FaIcon(FontAwesomeIcons.infoCircle)),
           tooltip: 'Info',
