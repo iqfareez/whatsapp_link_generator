@@ -31,7 +31,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
    }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     lintOptions {
         disable 'InvalidPackage'
@@ -41,7 +41,7 @@ android {
         
         applicationId "live.iqfareez.whatsapp_link_generator"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
