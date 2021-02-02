@@ -1,20 +1,21 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 ![Android](https://img.shields.io/badge/Works%20with-Android-green)
-![Web](https://img.shields.io/badge/Works%20on-Web-green)
+
+<!-- ![Web](https://img.shields.io/badge/Works%20on-Web-green) -->
 
 # WhatsApp Link Generator
 
 Flutter-based app. Generate wa.me link and QR code.
 
-## Web demo
+<!-- ## Web demo
 
-https://whatsapp-quick-link.web.app/
+https://whatsapp-quick-link.web.app/ -->
 
 ## Get the app
 
 on [Google Play Store](https://play.google.com/store/apps/details?id=live.iqfareez.whatsapp_link_generator)
 
-or [sideload apk](https://github.com/fareezMaple/WhatsApp-Link-Generator-Flutter/releases)
+or [view releases page](https://github.com/iqfareez/WhatsApp-Link-Generator-Flutter/releases)
 
 <!-- 2. Huawei App Gallery -->
 
