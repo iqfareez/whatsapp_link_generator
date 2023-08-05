@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_link_generator/CONSTANTS.dart';
+
 import 'custom_widget.dart';
 import 'form.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({this.appName});
+  MyHomePage({required this.appName});
   final String appName;
 
   @override
@@ -61,7 +61,7 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                FlatButton.icon(
+                TextButton.icon(
                   onPressed: () {
                     Share.share(
                         'Hey! I\'m using WA Link Generator to generate whatsapp contact link and QR code. Download it now on Google Play Store: $kPlayStoreLink');
@@ -76,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    FlatButton(
+                    TextButton(
                       child: FaIcon(
                         FontAwesomeIcons.twitter,
                         color: Colors.blue,
@@ -85,7 +85,7 @@ class MyHomePage extends StatelessWidget {
                         _launchURL(context, 'https://twitter.com/iqfareez2');
                       },
                     ),
-                    FlatButton(
+                    TextButton(
                       child: FaIcon(
                         FontAwesomeIcons.instagram,
                         color: Colors.purple,
@@ -95,7 +95,7 @@ class MyHomePage extends StatelessWidget {
                             context, 'https://www.instagram.com/iqfareez/');
                       },
                     ),
-                    FlatButton(
+                    TextButton(
                       child: FaIcon(
                         FontAwesomeIcons.github,
                         color: Colors.black,
@@ -110,7 +110,7 @@ class MyHomePage extends StatelessWidget {
               ],
             );
           },
-          child: Center(child: FaIcon(FontAwesomeIcons.infoCircle)),
+          child: Center(child: FaIcon(FontAwesomeIcons.circleInfo)),
           tooltip: 'Info',
           mini: true,
         ),
@@ -121,8 +121,9 @@ class MyHomePage extends StatelessWidget {
 }
 
 _launchURL(BuildContext context, String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
   } else {
     CustomWidgets.buildErrorSnackbar(context, 'Error opening socmed');
     throw 'Could not launch $url';

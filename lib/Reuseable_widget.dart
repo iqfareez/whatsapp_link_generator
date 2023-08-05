@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class NeuButton extends StatelessWidget {
-  const NeuButton({Key key, this.label, this.onPressedButton})
+  const NeuButton(
+      {Key? key, required this.label, required this.onPressedButton})
       : super(key: key);
 
   final String label;

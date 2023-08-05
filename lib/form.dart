@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:keyboard_avoider/keyboard_avoider.dart';
+
 import 'Reuseable_widget.dart';
 import 'result.dart';
 
@@ -19,23 +17,20 @@ class _MainFormState extends State<MainForm> {
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
-      child: KeyboardAvoider(
-        autoScroll: true,
-        child: Column(
-          children: [
-            inputPhoneForm(),
-            SizedBox(
-              height: 10.0,
-            ),
-            inputMessageForm(),
-            Row(
-              children: [
-                buildClearButton(),
-                buildGenerateButton(context),
-              ],
-            )
-          ],
-        ),
+      child: Column(
+        children: [
+          inputPhoneForm(),
+          SizedBox(
+            height: 10.0,
+          ),
+          inputMessageForm(),
+          Row(
+            children: [
+              buildClearButton(),
+              buildGenerateButton(context),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -195,12 +190,13 @@ class _MainFormState extends State<MainForm> {
   }
 }
 
+//solution by https://stackoverflow.com/a/63005046/13617136
 extension Utility on BuildContext {
   void nextEditableTextFocus() {
     do {
       FocusScope.of(this).nextFocus();
-    } while (FocusScope.of(this).focusedChild.context.widget is! EditableText);
+    } while (
+        FocusScope.of(this).focusedChild?.context?.widget is! EditableText);
   }
-  //solution by https://stackoverflow.com/a/63005046/13617136
 }
 //Neumorhic docs - https://pub.dev/packages/flutter_neumorphic

@@ -10,7 +10,7 @@ class CustomWidgets {
         behavior: SnackBarBehavior.floating,
         content: Row(
           children: [
-            Icon(FontAwesomeIcons.exclamationTriangle, color: Colors.grey),
+            Icon(FontAwesomeIcons.triangleExclamation, color: Colors.grey),
             SizedBox(width: 10),
             Text("$message"),
           ],
