@@ -27,7 +27,8 @@ const cardMargin = 16.0;
 const cardPadding = 16.0;
 
 class ResultPage extends StatefulWidget {
-  ResultPage({required this.phoneNumber, required this.message});
+  const ResultPage({Key? key, required this.phoneNumber, required this.message})
+      : super(key: key);
   final String phoneNumber;
   final String message;
 
@@ -53,7 +54,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NeumorphicAppBar(
-        title: Text(
+        title: const Text(
           'Generated',
           style: TextStyle(fontSize: 18),
         ),
@@ -61,7 +62,7 @@ class _ResultPageState extends State<ResultPage> {
           PopupMenuButton<String>(
             onSelected: handleClick,
             tooltip: 'Share as image or Text',
-            icon: FaIcon(FontAwesomeIcons.shareNodes),
+            icon: const FaIcon(FontAwesomeIcons.shareNodes),
             itemBuilder: (BuildContext context) {
               return {'as QR image', 'as link text'}.map((String choice) {
                 return PopupMenuItem<String>(
@@ -74,14 +75,14 @@ class _ResultPageState extends State<ResultPage> {
         ],
       ),
       body: Container(
-        margin: EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               flex: 4,
               child: Neumorphic(
-                margin: EdgeInsets.all(cardMargin),
+                margin: const EdgeInsets.all(cardMargin),
                 style: neuCardStyle,
                 child: RepaintBoundary(
                   key: globalKey,
@@ -105,19 +106,17 @@ class _ResultPageState extends State<ResultPage> {
             Expanded(
               flex: 2,
               child: Neumorphic(
-                margin: EdgeInsets.all(cardMargin),
-                padding: EdgeInsets.all(cardPadding),
+                margin: const EdgeInsets.all(cardMargin),
+                padding: const EdgeInsets.all(cardPadding),
                 style: neuCardStyle,
-                child: Container(
-                  child: Center(
-                    child: AutoSizeText(
-                      urlWaEncoded,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
-                      maxLines: 8,
+                child: Center(
+                  child: AutoSizeText(
+                    urlWaEncoded,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 22,
                     ),
+                    maxLines: 8,
                   ),
                 ),
               ),
@@ -166,7 +165,7 @@ class _ResultPageState extends State<ResultPage> {
 
   void copyLink() {
     Clipboard.setData(ClipboardData(text: urlWaEncoded));
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       behavior: SnackBarBehavior.floating,
       duration: Duration(seconds: 2),
       content: Row(

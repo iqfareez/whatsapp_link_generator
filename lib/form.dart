@@ -5,8 +5,10 @@ import 'Reuseable_widget.dart';
 import 'result.dart';
 
 class MainForm extends StatefulWidget {
+  const MainForm({Key? key}) : super(key: key);
+
   @override
-  _MainFormState createState() => _MainFormState();
+  State<MainForm> createState() => _MainFormState();
 }
 
 class _MainFormState extends State<MainForm> {
@@ -15,23 +17,20 @@ class _MainFormState extends State<MainForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
-      child: Column(
-        children: [
-          inputPhoneForm(),
-          SizedBox(
-            height: 10.0,
-          ),
-          inputMessageForm(),
-          Row(
-            children: [
-              buildClearButton(),
-              buildGenerateButton(context),
-            ],
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        inputPhoneForm(),
+        const SizedBox(
+          height: 10.0,
+        ),
+        inputMessageForm(),
+        Row(
+          children: [
+            buildClearButton(),
+            buildGenerateButton(context),
+          ],
+        )
+      ],
     );
   }
 
@@ -42,7 +41,7 @@ class _MainFormState extends State<MainForm> {
         onPressedButton: () {
           messageContentController.clear();
           phoneNumController.clear();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               behavior: SnackBarBehavior.floating,
               content: Row(
                 children: [
@@ -76,14 +75,14 @@ class _MainFormState extends State<MainForm> {
 
   Widget inputPhoneForm() {
     return Neumorphic(
-      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
+      margin: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Column(
           children: [
-            ListTile(
+            const ListTile(
               title: Text(
                 'Phone number',
                 textAlign: TextAlign.center,
@@ -98,7 +97,7 @@ class _MainFormState extends State<MainForm> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Neumorphic(
-                style: NeumorphicStyle(
+                style: const NeumorphicStyle(
                   depth: -24.0,
                   color: Colors.transparent,
                   shape: NeumorphicShape.convex,
@@ -108,13 +107,13 @@ class _MainFormState extends State<MainForm> {
                   maxLength: 15,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    counter: Offstage(),
+                    counter: const Offstage(),
                     border: InputBorder.none,
                     // prefixIcon: Icon(Icons.contact_phone),
                     // suffixIcon: Icon(null),
-                    prefixIcon: Icon(null),
+                    prefixIcon: const Icon(null),
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                       onPressed: () {
                         phoneNumController.clear();
                       },
@@ -135,14 +134,14 @@ class _MainFormState extends State<MainForm> {
 
   Widget inputMessageForm() {
     return Neumorphic(
-      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
+      margin: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 2.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Column(
           children: [
-            ListTile(
+            const ListTile(
               title: Text(
                 'Message',
                 textAlign: TextAlign.center,
@@ -157,7 +156,7 @@ class _MainFormState extends State<MainForm> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Neumorphic(
-                style: NeumorphicStyle(
+                style: const NeumorphicStyle(
                   depth: -24.0,
                   color: Colors.transparent,
                   shape: NeumorphicShape.flat,
@@ -167,10 +166,10 @@ class _MainFormState extends State<MainForm> {
                   maxLines: 4,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(8.0),
+                    contentPadding: const EdgeInsets.all(8.0),
                     border: InputBorder.none,
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                       onPressed: () {
                         messageContentController.clear();
                       },

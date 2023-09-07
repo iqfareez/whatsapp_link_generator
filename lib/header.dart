@@ -2,12 +2,27 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {
+  const AppHeader({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        child: Center(
+        height: 180,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.green.shade600, Colors.teal.shade600],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+            image: DecorationImage(
+              image: const AssetImage("assets/images/abstract_shapes_3874551.png"),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.white24.withOpacity(0.2), BlendMode.dstATop),
+            )),
+        child: const Center(
           child: AutoSizeText(
             'WhatsApp link tool',
             style: TextStyle(
@@ -20,19 +35,6 @@ class AppHeader extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        height: 180,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.green.shade600, Colors.teal.shade600],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
-            image: DecorationImage(
-              image: AssetImage("assets/images/abstract_shapes_3874551.png"),
-              fit: BoxFit.cover,
-              colorFilter: new ColorFilter.mode(
-                  Colors.white24.withOpacity(0.2), BlendMode.dstATop),
-            )),
       ),
     );
   }

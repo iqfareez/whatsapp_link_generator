@@ -8,11 +8,13 @@ import 'custom_widget.dart';
 import 'form.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   final appName = 'WA link generator';
+
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({required this.appName});
+  const MyHomePage({Key? key, required this.appName}) : super(key: key);
   final String appName;
 
   @override
@@ -38,13 +40,13 @@ class MyHomePage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: NeumorphicAppBar(
-          leading: Icon(FontAwesomeIcons.whatsapp),
+          leading: const Icon(FontAwesomeIcons.whatsapp),
           title: Text(
             appName,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        body: MainForm(),
+        body: const MainForm(),
         floatingActionButton: NeumorphicFloatingActionButton(
           style: NeumorphicStyle(depth: -16, color: Colors.teal.shade400),
           onPressed: () {
@@ -58,7 +60,7 @@ class MyHomePage extends StatelessWidget {
                 width: 48.0,
               ),
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextButton.icon(
@@ -66,10 +68,10 @@ class MyHomePage extends StatelessWidget {
                     Share.share(
                         'Hey! I\'m using WA Link Generator to generate whatsapp contact link and QR code. Download it now on Google Play Store: $kPlayStoreLink');
                   },
-                  icon: FaIcon(FontAwesomeIcons.share),
-                  label: Text('Share this app'),
+                  icon: const FaIcon(FontAwesomeIcons.share),
+                  label: const Text('Share this app'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -77,7 +79,7 @@ class MyHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton(
-                      child: FaIcon(
+                      child: const FaIcon(
                         FontAwesomeIcons.twitter,
                         color: Colors.blue,
                       ),
@@ -86,7 +88,7 @@ class MyHomePage extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                      child: FaIcon(
+                      child: const FaIcon(
                         FontAwesomeIcons.instagram,
                         color: Colors.purple,
                       ),
@@ -96,7 +98,7 @@ class MyHomePage extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                      child: FaIcon(
+                      child: const FaIcon(
                         FontAwesomeIcons.github,
                         color: Colors.black,
                       ),
@@ -110,9 +112,9 @@ class MyHomePage extends StatelessWidget {
               ],
             );
           },
-          child: Center(child: FaIcon(FontAwesomeIcons.circleInfo)),
           tooltip: 'Info',
           mini: true,
+          child: const Center(child: FaIcon(FontAwesomeIcons.circleInfo)),
         ),
         resizeToAvoidBottomInset: false,
       ),
