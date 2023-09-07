@@ -13,8 +13,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'CONSTANTS.dart';
-import 'Reuseable_widget.dart';
-import 'custom_widget.dart';
+import 'shared/util/my_snackbar.dart';
+import 'shared/widgets/neu_button.dart';
 
 NeumorphicStyle neuCardStyle = NeumorphicStyle(
   depth: 8,
@@ -205,7 +205,7 @@ _launchURL(BuildContext context, String url) async {
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
   } else {
-    CustomWidgets.buildErrorSnackbar(context, 'Error opening WhatsApp');
+    showErrorSnackbar(context, 'Error opening WhatsApp');
     throw 'Could not launch $uri';
   }
 }

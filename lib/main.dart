@@ -2,10 +2,10 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp_link_generator/CONSTANTS.dart';
 
-import 'custom_widget.dart';
+import 'CONSTANTS.dart';
 import 'form.dart';
+import 'shared/util/my_snackbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
-      // debugShowCheckedModeBanner: false,
       title: appName,
       themeMode: ThemeMode.light,
       home: MyHomePage(
@@ -127,7 +126,7 @@ _launchURL(BuildContext context, String url) async {
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
   } else {
-    CustomWidgets.buildErrorSnackbar(context, 'Error opening socmed');
+    showErrorSnackbar(context, 'Error opening socmed');
     throw 'Could not launch $url';
   }
 }
