@@ -52,8 +52,8 @@ class MyHomePage extends StatelessWidget {
             showAboutDialog(
               context: context,
               applicationName: appName,
-              applicationVersion: '1.2.14-F+6',
-              applicationLegalese: 'Copyright © Muhammad Fareez 2021',
+              applicationVersion: '1.3.0+7',
+              applicationLegalese: 'Copyright © Muhammad Fareez 2023',
               applicationIcon: Image.asset(
                 'assets/logo.png',
                 width: 48.0,

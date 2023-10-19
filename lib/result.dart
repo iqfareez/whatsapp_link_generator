@@ -183,7 +183,7 @@ class _ResultPageState extends State<ResultPage> {
         globalKey.currentContext?.findRenderObject() as RenderRepaintBoundary;
     // In debug mode Android sometimes will return !debugNeedsPrint error
     if (kDebugMode || boundary.debugNeedsPaint) {
-      print("Waiting for boundary to be painted.");
+      debugPrint("Waiting for boundary to be painted.");
       await Future.delayed(const Duration(milliseconds: 20));
     }
     ui.Image image = await boundary.toImage(pixelRatio: 2.5);
