@@ -38,7 +38,7 @@ class ResultPage extends StatefulWidget {
 
 class _ResultPageState extends State<ResultPage> {
   GlobalKey globalKey = GlobalKey();
-  late String urlWaEncoded;
+  late final String urlWaEncoded;
   bool isSelectedPhone = true;
   bool isSelectedMessage = true;
 
@@ -158,7 +158,7 @@ class _ResultPageState extends State<ResultPage> {
         captureAndShareImage();
         break;
       case 'as link text':
-        Share.share(urlWaEncoded);
+        Share.share('https://$urlWaEncoded');
         break;
     }
   }
