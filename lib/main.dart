@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeumorphicApp(
       title: appName,
+      theme: const NeumorphicThemeData(
+        accentColor: Colors.blueGrey,
+      ),
       themeMode: ThemeMode.light,
       home: MyHomePage(
         appName: appName,
