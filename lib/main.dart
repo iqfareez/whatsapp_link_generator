@@ -78,7 +78,7 @@ class MyHomePage extends StatelessWidget {
                         color: Colors.blue,
                       ),
                       onPressed: () =>
-                          _launchURL(context, 'https://twitter.com/iqfareez2'),
+                          _launchURL(context, 'https://twitter.com/iqfareez'),
                     ),
                     TextButton(
                       child: const FaIcon(
@@ -92,7 +92,7 @@ class MyHomePage extends StatelessWidget {
                       child: const FaIcon(FontAwesomeIcons.github,
                           color: Colors.black),
                       onPressed: () => _launchURL(context,
-                          'https://github.com/iqfareez/WhatsApp-Link-Generator-Flutter'),
+                          'https://github.com/iqfareez/whatsapp_link_generator'),
                     ),
                   ],
                 ),
