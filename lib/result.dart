@@ -205,7 +205,7 @@ _launchURL(BuildContext context, String url) async {
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);
   } else {
-    showErrorSnackbar(context, 'Error opening WhatsApp');
+    showErrorSnackbar(context, 'Failed to open WhatsApp');
     throw 'Could not launch $uri';
   }
 }

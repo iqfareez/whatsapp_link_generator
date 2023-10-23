@@ -7,12 +7,12 @@ void showErrorSnackbar(BuildContext context, String message) {
       behavior: SnackBarBehavior.floating,
       content: Row(
         children: [
-          const Icon(FontAwesomeIcons.triangleExclamation, color: Colors.grey),
+          const Icon(FontAwesomeIcons.triangleExclamation, color: Colors.white),
           const SizedBox(width: 10),
           Text(message),
         ],
       ),
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.redAccent,
     ),
   );
 }
