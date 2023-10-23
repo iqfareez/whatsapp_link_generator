@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -92,10 +93,11 @@ class _ResultPageState extends State<ResultPage> {
                       child: Center(
                         child: QrImageView(
                           data: urlWaEncoded,
-                          foregroundColor:
-                              Theme.of(context).brightness == Brightness.dark
-                                  ? Colors.white
-                                  : Colors.black,
+                          eyeStyle: QrEyeStyle(
+                            color: Colors.blueGrey.shade800,
+                          ),
+                          dataModuleStyle: QrDataModuleStyle(
+                              color: Colors.blueGrey.shade800),
                         ),
                       ),
                     ),
@@ -113,8 +115,9 @@ class _ResultPageState extends State<ResultPage> {
                   child: AutoSizeText(
                     urlWaEncoded,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 22,
+                      color: Colors.blueGrey.shade800,
                     ),
                     maxLines: 8,
                   ),
@@ -163,8 +166,16 @@ class _ResultPageState extends State<ResultPage> {
     }
   }
 
-  void copyLink() {
-    Clipboard.setData(ClipboardData(text: urlWaEncoded));
+  void copyLink() async {
+    await Clipboard.setData(ClipboardData(text: urlWaEncoded));
+
+    // Get Android version to determine wether to show snackbar or not. This
+    // is needed to avoid duplicate message by the system. Read more on:
+    // https://developer.android.com/develop/ui/views/touch-and-input/copy-paste#duplicate-notifications
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    if (androidInfo.version.sdkInt >= 33) return;
+
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       behavior: SnackBarBehavior.floating,
       duration: Duration(seconds: 2),
